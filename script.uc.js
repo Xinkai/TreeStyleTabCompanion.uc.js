@@ -25,7 +25,7 @@
         display: none;
     }
 
-    :root[${TSTC_TABS_HIDE_FLAG}][tabsintitlebar] #TabsToolbar {
+    :root[${TSTC_TABS_HIDE_FLAG}] #TabsToolbar {
         display: none;
     }
 
@@ -64,7 +64,7 @@
         }
 
         function compensate() {
-            if (statusHide === 1 && window.windowState === 1) {
+            if (statusHide === 1 && window.windowState === 1 && documentElement.getAttribute("tabsintitlebar") === "true") {
                 const marginTopCompensate = -window.screenY;
                 documentElement.style["margin-top"] = `${marginTopCompensate}px`;
                 if (marginTopCompensate === 0) {
