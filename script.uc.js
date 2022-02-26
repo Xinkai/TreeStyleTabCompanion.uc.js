@@ -9,7 +9,10 @@
         console.error("TST.UC:", ...args);
     }
 
-    const SIDEBAR_ACTION = "treestyletab_piro_sakura_ne_jp-sidebar-action";
+    const SIDEBAR_ACTIONS = [
+        "_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action",
+        "treestyletab_piro_sakura_ne_jp-sidebar-action",
+    ];
     const TSTC_TABS_HIDE_FLAG = "tstc-tabs-hide";
 
     const STYLE = `
@@ -79,7 +82,7 @@
         }
 
         function refresh() {
-            const shouldHide = sidebarBox.getAttribute("sidebarcommand") === SIDEBAR_ACTION && sidebarBox.getAttribute("hidden") !== "true";
+            const shouldHide = SIDEBAR_ACTIONS.includes(sidebarBox.getAttribute("sidebarcommand")) && sidebarBox.getAttribute("hidden") !== "true";
             if (shouldHide) {
                 hideOriginalTabs();
             } else {
@@ -114,4 +117,3 @@
         error(e);
     }
 })();
-

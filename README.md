@@ -1,5 +1,5 @@
 # TreeStyleTabCompanion.uc.js
-Firefox userChrome.js for hiding the native tab bar when TreeStyleTab is active
+A Firefox userChrome.js for hiding the native tab bar when a sidebar tab manager is active
 
 Screenshot
 ----------
@@ -7,8 +7,11 @@ Screenshot
 
 Requirements
 ------------
-1. Modern releases of *[Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/)* and *Firefox*. Tested with TST 3.8.21 with Firefox 97.
-2. A working [userChrome.js setup](https://www.userchrome.org/what-is-userchrome-js.html).
+1. A modern release of *Firefox*. Tested with version 97.
+2. A modern release of a supported sidebar tab manager extension
+    - *[Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab)*
+    - *[Sidebery](https://addons.mozilla.org/en-US/firefox/addon/sidebery)*
+3. A working [userChrome.js setup](https://www.userchrome.org/what-is-userchrome-js.html).
 
 License
 -------
