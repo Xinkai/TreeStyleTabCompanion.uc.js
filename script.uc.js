@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ * Description: A Firefox userChrome.js for hiding the native tab bar when a sidebar tab manager is active 
+ * Homepage: https://github.com/Xinkai/TreeStyleTabCompanion.uc.js
+ * License: MIT
+ */
+
 (() => {
     function log(...args) {
         console.log("TST.UC:", ...args);
