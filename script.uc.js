@@ -72,21 +72,6 @@
             statusHide = 0;
         }
 
-        function compensate() {
-            if (statusHide === 1 && window.windowState === 1 && documentElement.getAttribute("tabsintitlebar") === "true") {
-                const marginTopCompensate = -window.screenY;
-                documentElement.style["margin-top"] = `${marginTopCompensate}px`;
-                if (marginTopCompensate === 0) {
-                    documentElement.style["height"] = "100%";
-                } else {
-                    documentElement.style["height"] = `calc(100% - ${marginTopCompensate}px)`;
-                }
-            } else {
-                documentElement.style["height"] = "100%";
-                documentElement.style["margin-top"] = "0";
-            }
-        }
-
         function refresh() {
             const shouldHide = SIDEBAR_ACTIONS.includes(sidebarBox.getAttribute("sidebarcommand")) && sidebarBox.getAttribute("hidden") !== "true";
             if (shouldHide) {
@@ -94,10 +79,7 @@
             } else {
                 undo();
             }
-            compensate();
         }
-
-        window.addEventListener("resize", compensate);
 
         {
             const styleSheet = document.createElement("style");
