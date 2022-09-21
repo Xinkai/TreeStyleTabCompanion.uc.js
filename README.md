@@ -11,6 +11,8 @@ Requirements
 2. A modern release of a supported sidebar tab manager extension
     - *[Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab)*
     - *[Sidebery](https://addons.mozilla.org/en-US/firefox/addon/sidebery)*
+    - *[Tab Center Reborn](https://addons.mozilla.org/en-US/firefox/addon/tabcenter-reborn/)*
+    - *[Tree Tabs](https://addons.mozilla.org/en-US/firefox/addon/tree-tabs/)*
 3. A working [userChrome.js setup](https://www.userchrome.org/what-is-userchrome-js.html).
 
 License

@@ -16,8 +16,10 @@
     }
 
     const SIDEBAR_ACTIONS = [
-        "_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action",
-        "treestyletab_piro_sakura_ne_jp-sidebar-action",
+        "_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action", // Sidebery
+        "treestyletab_piro_sakura_ne_jp-sidebar-action", // Tree Style Tab
+        "tabcenter-reborn_ariasuni-sidebar-action", // Tab Center Reborn
+        "treetabs_jagiello_it-sidebar-action", // Tree Tabs
     ];
     const TSTC_TABS_HIDE_FLAG = "tstc-tabs-hide";
 
