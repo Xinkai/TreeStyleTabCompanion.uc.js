@@ -57,7 +57,9 @@
         let statusHide = -1;
 
         function hideOriginalTabs() {
-            navBar.appendChild(accessibilityIndicator);
+            if (accessibilityIndicator) {
+                navBar.appendChild(accessibilityIndicator);
+            }
             navBar.appendChild(privateBrowsingIndicator);
             navBar.appendChild(titlebarButtonboxContainer);
             documentElement.setAttribute(TSTC_TABS_HIDE_FLAG, "true");
@@ -65,7 +67,9 @@
         }
 
         function undo() {
-            tabsToolbar.appendChild(accessibilityIndicator);
+            if (accessibilityIndicator) {
+                tabsToolbar.appendChild(accessibilityIndicator);
+            }
             tabsToolbar.appendChild(privateBrowsingIndicator);
             tabsToolbar.appendChild(titlebarButtonboxContainer);
             documentElement.removeAttribute(TSTC_TABS_HIDE_FLAG);
