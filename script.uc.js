@@ -43,7 +43,7 @@
     :root[${TSTC_TABS_HIDE_FLAG}] #sidebar-header {
         -moz-window-dragging: drag;
     }
-    `
+    `;
 
     try {
         const documentElement = document.documentElement;
