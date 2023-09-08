@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Description: A Firefox userChrome.js for hiding the native tab bar when a sidebar tab manager is active 
+ * Description: A Firefox userChrome.js for hiding the native tab bar when a sidebar tab manager is active
  * Homepage: https://github.com/Xinkai/TreeStyleTabCompanion.uc.js
  * License: MIT
  */
@@ -51,7 +51,7 @@
         const navBar = document.getElementById("nav-bar");
 
         const titlebarButtonboxContainer = tabsToolbar.getElementsByClassName("titlebar-buttonbox-container")[0];
-        const privateBrowsingIndicator = tabsToolbar.getElementsByClassName("private-browsing-indicator")[0];
+        const privateBrowsingIndicators = tabsToolbar.querySelectorAll("#private-browsing-indicator-with-label,.private-browsing-indicator");
         const accessibilityIndicator = tabsToolbar.getElementsByClassName("accessibility-indicator")[0];
 
         const sidebarBox = document.getElementById("sidebar-box");
@@ -62,7 +62,9 @@
             if (accessibilityIndicator) {
                 navBar.appendChild(accessibilityIndicator);
             }
-            navBar.appendChild(privateBrowsingIndicator);
+            for (const privateBrowsingIndicator of privateBrowsingIndicators) {
+                navBar.appendChild(privateBrowsingIndicator);
+            }
             navBar.appendChild(titlebarButtonboxContainer);
             documentElement.setAttribute(TSTC_TABS_HIDE_FLAG, "true");
             statusHide = 1;
@@ -72,7 +74,9 @@
             if (accessibilityIndicator) {
                 tabsToolbar.appendChild(accessibilityIndicator);
             }
-            tabsToolbar.appendChild(privateBrowsingIndicator);
+            for (const privateBrowsingIndicator of privateBrowsingIndicators) {
+                tabsToolbar.appendChild(privateBrowsingIndicator);
+            }
             tabsToolbar.appendChild(titlebarButtonboxContainer);
             documentElement.removeAttribute(TSTC_TABS_HIDE_FLAG);
             statusHide = 0;
