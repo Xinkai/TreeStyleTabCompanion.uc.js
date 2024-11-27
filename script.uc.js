@@ -43,6 +43,10 @@
     :root[${TSTC_TABS_HIDE_FLAG}] #sidebar-header {
         -moz-window-dragging: drag;
     }
+
+	:root[${TSTC_TABS_HIDE_FLAG}] #navigator-toolbox #nav-bar .titlebar-buttonbox-container {
+		display: flex;
+	}
     `;
 
     try {
@@ -51,6 +55,11 @@
         const navBar = document.getElementById("nav-bar");
 
         const titlebarButtonboxContainer = tabsToolbar.getElementsByClassName("titlebar-buttonbox-container")[0];
+
+        // Firefox is working on native support for vertical tab, like Edge.
+        // It puts a `.titlebar-buttonbox-container` in `#nav-bar`.
+        // This copy is hidden unless `#navigator-toolbox[tabs-hidden]` is matched
+        const titlebarButtonboxContainerInNavBar = navBar.getElementsByClassName("titlebar-buttonbox-container")[0];
         const privateBrowsingIndicators = tabsToolbar.querySelectorAll("#private-browsing-indicator-with-label,.private-browsing-indicator");
         const accessibilityIndicator = tabsToolbar.getElementsByClassName("accessibility-indicator")[0];
 
@@ -65,7 +74,9 @@
             for (const privateBrowsingIndicator of privateBrowsingIndicators) {
                 navBar.appendChild(privateBrowsingIndicator);
             }
-            navBar.appendChild(titlebarButtonboxContainer);
+            if (titlebarButtonboxContainerInNavBar == null) {
+                navBar.appendChild(titlebarButtonboxContainer);
+            }
             documentElement.setAttribute(TSTC_TABS_HIDE_FLAG, "true");
             statusHide = 1;
         }
@@ -77,7 +88,9 @@
             for (const privateBrowsingIndicator of privateBrowsingIndicators) {
                 tabsToolbar.appendChild(privateBrowsingIndicator);
             }
-            tabsToolbar.appendChild(titlebarButtonboxContainer);
+            if (titlebarButtonboxContainerInNavBar == null) {
+                tabsToolbar.appendChild(titlebarButtonboxContainer);
+            }
             documentElement.removeAttribute(TSTC_TABS_HIDE_FLAG);
             statusHide = 0;
         }
