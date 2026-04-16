@@ -47,6 +47,10 @@
 	:root[${TSTC_TABS_HIDE_FLAG}] #navigator-toolbox #nav-bar .titlebar-buttonbox-container {
 		display: flex;
 	}
+
+	:root[${TSTC_TABS_HIDE_FLAG}][privatebrowsingmode] #navigator-toolbox #nav-bar .private-browsing-indicator-with-label {
+		display: flex;
+	}
     `;
 
     try {
@@ -60,7 +64,6 @@
         // It puts a `.titlebar-buttonbox-container` in `#nav-bar`.
         // This copy is hidden unless `#navigator-toolbox[tabs-hidden]` is matched
         const titlebarButtonboxContainerInNavBar = navBar.getElementsByClassName("titlebar-buttonbox-container")[0];
-        const privateBrowsingIndicators = tabsToolbar.querySelectorAll("#private-browsing-indicator-with-label,.private-browsing-indicator");
         const accessibilityIndicator = tabsToolbar.getElementsByClassName("accessibility-indicator")[0];
 
         const sidebarBox = document.getElementById("sidebar-box");
@@ -70,9 +73,6 @@
         function hideOriginalTabs() {
             if (accessibilityIndicator) {
                 navBar.appendChild(accessibilityIndicator);
-            }
-            for (const privateBrowsingIndicator of privateBrowsingIndicators) {
-                navBar.appendChild(privateBrowsingIndicator);
             }
             if (titlebarButtonboxContainerInNavBar == null) {
                 navBar.appendChild(titlebarButtonboxContainer);
@@ -85,9 +85,6 @@
             if (accessibilityIndicator) {
                 tabsToolbar.appendChild(accessibilityIndicator);
             }
-            for (const privateBrowsingIndicator of privateBrowsingIndicators) {
-                tabsToolbar.appendChild(privateBrowsingIndicator);
-            }
             if (titlebarButtonboxContainerInNavBar == null) {
                 tabsToolbar.appendChild(titlebarButtonboxContainer);
             }
@@ -96,7 +93,7 @@
         }
 
         function refresh() {
-            const shouldHide = SIDEBAR_ACTIONS.includes(sidebarBox.getAttribute("sidebarcommand")) && sidebarBox.getAttribute("hidden") !== "true";
+            const shouldHide = SIDEBAR_ACTIONS.includes(sidebarBox.getAttribute("sidebarcommand")) && sidebarBox.getAttribute("checked") === "true";
             if (shouldHide) {
                 hideOriginalTabs();
             } else {
@@ -114,7 +111,7 @@
         const observer = new MutationObserver((mutationsList, _observer) => {
             try {
                 for (const mutation of mutationsList) {
-                    if (["sidebarcommand", "hidden"].includes(mutation.attributeName)) {
+                    if (["sidebarcommand", "checked"].includes(mutation.attributeName)) {
                         refresh();
                     }
                 }
