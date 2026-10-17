@@ -40,8 +40,9 @@
         display: none;
     }
 
-    :root[${TSTC_TABS_HIDE_FLAG}] #sidebar-header {
+    :root[${TSTC_TABS_HIDE_FLAG}] #tst-sidebar-drag-handle {
         -moz-window-dragging: drag;
+        height: calc(32px + 2 * var(--space-large));
     }
 
 	:root[${TSTC_TABS_HIDE_FLAG}] #navigator-toolbox #nav-bar .titlebar-buttonbox-container {
@@ -67,6 +68,7 @@
         const accessibilityIndicator = tabsToolbar.getElementsByClassName("accessibility-indicator")[0];
 
         const sidebarBox = document.getElementById("sidebar-box");
+        const sidebar = document.getElementById("sidebar");
 
         let statusHide = -1;
 
@@ -105,6 +107,13 @@
             const styleSheet = document.createElement("style");
             styleSheet.innerText = STYLE;
             document.head.appendChild(styleSheet)
+        }
+        if (sidebar != null) {
+            const dragHandle = document.createElement("box");
+            dragHandle.id = "tst-sidebar-drag-handle";
+            sidebar.before(dragHandle);
+        } else {
+            error("No #sidebar found");
         }
         refresh();
 
